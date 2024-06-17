@@ -37,8 +37,16 @@ const addOne = (Model, modelName = '') =>
     if (modelName == 'Product') {
       req.body.slug = slugify(req.body.title);
       doc = await Model.create(req.body);
-    } else {
+    } 
+    else if(modelName == 'Favourite') {
+      req.body.userId = req.user._id;
+      req.body.slug = slugify(req.body.title);
+      doc = await Model.create(req.body);
+    }
+    else {
+      if(req.body.name){
       req.body.slug = slugify(req.body.name);
+      } 
       doc = await Model.create(req.body);
     }
 
