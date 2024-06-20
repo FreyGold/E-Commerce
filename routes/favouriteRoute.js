@@ -10,8 +10,8 @@ import {
 
 const router = express.Router();
 
-router.post(protect, '/:id', addFavourite);
-router.get(protect, '/', getAllFavourite);
-router.delete(protect, '/remove/:id', deleteFavourite)
+router.post('/add/:id',protect,  addFavourite);
+router.get( '/', protect,getAllFavourite);
+router.delete( '/remove/:id',protect, deleteFavourite)
 
 export default router

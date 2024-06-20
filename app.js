@@ -11,6 +11,7 @@ import productRoute from './routes/productRoute.js';
 import subcategoryRoute from './routes/subcategoryRoute.js';
 import userRoute from './routes/userRoute.js';
 import authRoute from './routes/authRoute.js';
+import favouriteRoute from './routes/favouriteRoute.js';
 import AppError from './utils/appError.js';
 import globalHandler from './middlewares/globalHandler.js';
 
@@ -32,6 +33,7 @@ app.use('/api/v1/product/', productRoute);
 app.use('/api/v1/subcategory/', subcategoryRoute);
 app.use('/api/v1/user/', userRoute);
 app.use('/api/v1/auth/', authRoute);
+app.use('/api/v1/wishlist/', favouriteRoute);
 
 /////////////////////
 /////////////////////
