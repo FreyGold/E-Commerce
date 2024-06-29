@@ -1,4 +1,5 @@
 import express from 'express';
+
 // import {
 //   getUserValidator,
 //   patchUserValidator,
@@ -9,7 +10,6 @@ import express from 'express';
 
 import {
   protect,
-  restrictTo,
   signIn,
   signUp,
   resetPassword,
@@ -19,11 +19,6 @@ import {
   updateUser,
   deleteUser,
 } from '../services/authService.js';
-
-import {
-  singleUpload,
-  resizeSingleImage,
-} from '../middlewares/uploadImagesMiddleware.js';
 
 const router = express.Router();
 

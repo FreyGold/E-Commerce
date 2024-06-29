@@ -37,16 +37,14 @@ const addOne = (Model, modelName = '') =>
     if (modelName == 'Product') {
       req.body.slug = slugify(req.body.title);
       doc = await Model.create(req.body);
-    } 
-    else if(modelName == 'Favourite') {
+    } else if (modelName == 'Favourite') {
       req.body.userId = req.user._id;
       req.body.slug = slugify(req.body.title);
       doc = await Model.create(req.body);
-    }
-    else {
-      if(req.body.name){
-      req.body.slug = slugify(req.body.name);
-      } 
+    } else {
+      if (req.body.name) {
+        req.body.slug = slugify(req.body.name);
+      }
       doc = await Model.create(req.body);
     }
 
@@ -72,6 +70,10 @@ const getOne = (Model) =>
 const getAll = (Model) =>
   catchAsync(async (req, res, next) => {
     let docs = null;
+    let filter = { ...req.query };
+    if (req.filterObj) {
+      filter = { ...req.filterObj };
+    }
     const apiFeatures = new ApiFeatures(req.query, Model.find())
       .filter()
       .search()
