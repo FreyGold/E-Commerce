@@ -5,13 +5,7 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 
 import { connectDB } from './config/db.js';
-import categoryRoute from './routes/categoryRoute.js';
-import brandRoute from './routes/brandRoute.js';
-import productRoute from './routes/productRoute.js';
-import subcategoryRoute from './routes/subcategoryRoute.js';
-import userRoute from './routes/userRoute.js';
-import authRoute from './routes/authRoute.js';
-import favouriteRoute from './routes/favouriteRoute.js';
+import mountRoutes from './routes/index.js';
 import AppError from './utils/appError.js';
 import globalHandler from './middlewares/globalHandler.js';
 
@@ -27,15 +21,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'uploads/')));
 
 app.use(morgan('dev'));
-app.use('/api/v1/category/', categoryRoute);
-app.use('/api/v1/brand/', brandRoute);
-app.use('/api/v1/product/', productRoute);
-app.use('/api/v1/subcategory/', subcategoryRoute);
-app.use('/api/v1/user/', userRoute);
-app.use('/api/v1/auth/', authRoute);
-app.use('/api/v1/wishlist/', favouriteRoute);
 
-/////////////////////
+//routes
+mountRoutes(app);
 /////////////////////
 
 /* @desc handle non-existing routes, any request that doesn't
